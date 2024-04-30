@@ -6,7 +6,7 @@ Incident management, Logging, Oncall
 
 Before you can start using Samarithan, you'll need to complete the following steps:
 
-1. **Sign Up at Our Website**: To access the Samarithan API and obtain an API key, you must first sign up at our website [Samarithan](https://6631121ada053c0008d3877c--roaring-biscotti-b91532.netlify.app).
+1. **Sign Up at Our Website**: To access the Samarithan API and obtain an API key, you must first sign up at our website [Samarithan](https://roaring-biscotti-b91532.netlify.app).
 
 2. **Obtain Your API Key**: After signing up and logging in to your dashboard, you'll find your unique API key on your dashboard. This API key is required to configure Samarithan and make API requests.
 

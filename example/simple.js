@@ -2,7 +2,7 @@ const Samarithan = require("../sam");
 
 const sam = new Samarithan();
 sam.configure({
-  apiKey: "01689269d4832494.af16b2dba96d9968",
+  apiKey: "api-key",
 });
 sam.logAll({
   app: "samthan",
