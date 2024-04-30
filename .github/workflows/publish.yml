@@ -2,7 +2,8 @@ name: Publish package
 
 on:
   push:
-    branch: main
+    branches:
+      - main
 
 jobs:
   publish:
@@ -11,10 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
-          with:
-            node-version: "20"
+        with:
+          node-version: "14" # or specify a valid Node.js version
       - run: npm ci
       - run: npm test
-      - uses: JS-DevTools/npm-publish@v3
-          with:
-            token: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm
+        uses: JS-DevTools/npm-publish@v4 # or specify the correct version
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
