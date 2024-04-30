@@ -17,6 +17,6 @@ jobs:
       - run: npm ci
       - run: npm test
       - name: Publish to npm
-        uses: JS-DevTools/npm-publish@v4 # or specify the correct version
+        uses: JS-DevTools/npm-publish # or specify the correct version
         with:
           token: ${{ secrets.NPM_TOKEN }}
