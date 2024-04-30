@@ -10,13 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: "14" # or specify a valid Node.js version
-      - run: npm ci
-      - run: npm test
-      - name: Publish to npm
-        uses: JS-DevTools/npm-publish # or specify the correct version
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+          node-version: "20"
+      - name: Install dependencies and build 🔧
+        run: npm ci && npm run build
+      - name: Publish package on NPM 📦
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
