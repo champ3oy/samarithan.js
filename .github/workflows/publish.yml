@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: "latest"
       - name: Publish package on NPM 📦
-        run: npm install
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

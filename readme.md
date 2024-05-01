@@ -77,7 +77,7 @@ const incident = {
   severity: "High",
 };
 
-const success = await Samarithan.createIncident(incident);
+const success = await sam.createIncident(incident);
 
 if (success) {
   console.log("incident added successfully.");
