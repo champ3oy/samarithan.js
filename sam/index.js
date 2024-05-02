@@ -104,9 +104,10 @@ class Samarithan {
       const response = await axios.post(
         ENDPOINTS.LOG,
         {
-          title: e?.message,
-          description: e.stack?.toString(),
-          severity: "Low",
+          title: e.message,
+          description: e.stack,
+          slug: e?.name,
+          app: app ?? "default",
         },
         {
           headers: {
