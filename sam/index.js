@@ -105,7 +105,7 @@ class Samarithan {
         ENDPOINTS.LOG,
         {
           title: e.message,
-          description: e.stack,
+          description: JSON.stringify(e),
           slug: e?.name,
           app: "default",
         },
