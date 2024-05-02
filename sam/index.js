@@ -107,7 +107,7 @@ class Samarithan {
           title: e.message,
           description: e.stack,
           slug: e?.name,
-          app: app ?? "default",
+          app: "default",
         },
         {
           headers: {
