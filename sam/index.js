@@ -132,31 +132,50 @@ class Samarithan {
   }
 
   async logAll({ app }) {
-    process.on("unhandledRejection", (reason, promise) => {
-      promise.catch((err) => {
-        console.log("Unhandled Rejection:", err.message);
-        this.createLog({
-          title: err.message,
-          description: err.stack,
-          slug: err?.name,
-          app: app ?? "default",
+    if (typeof process !== "undefined" && process.on) {
+      // Node.js runtime
+      process.on("unhandledRejection", (reason, promise) => {
+        promise.catch((err) => {
+          console.log("Unhandled Rejection:", err.message);
+          this.createLog({
+            title: err.message,
+            description: err.stack,
+            slug: err?.name,
+            app: app ?? "default",
+          });
         });
       });
 
-      return;
-    });
-
-    process.on("uncaughtException", (err) => {
-      console.log("Uncaught Exception:", err.message);
-      this.createLog({
-        title: err.message,
-        description: err.stack,
-        slug: err.name,
-        app: app ?? "default",
+      process.on("uncaughtException", (err) => {
+        console.log("Uncaught Exception:", err.message);
+        this.createLog({
+          title: err.message,
+          description: err.stack,
+          slug: err.name,
+          app: app ?? "default",
+        });
       });
-
-      return;
-    });
+    } else if (typeof window !== "undefined") {
+      // Browser environment
+      window.onerror = function (message, source, lineno, colno, error) {
+        console.error(
+          "Error:",
+          message,
+          "at",
+          source,
+          "line",
+          lineno,
+          "column",
+          colno,
+          error
+        );
+        // You can adjust this part to match your logging needs in the browser
+      };
+    } else {
+      console.warn(
+        "Neither Node.js process nor window object detected. Unable to set up error logging."
+      );
+    }
   }
 }
 
