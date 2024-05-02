@@ -158,17 +158,12 @@ class Samarithan {
     } else if (typeof window !== "undefined") {
       // Browser environment
       window.onerror = function (message, source, lineno, colno, error) {
-        console.error(
-          "Error:",
-          message,
-          "at",
-          source,
-          "line",
-          lineno,
-          "column",
-          colno,
-          error
-        );
+        this.createLog({
+          title: message,
+          description: source + error,
+          slug: lineno,
+          app: app ?? "default",
+        });
         // You can adjust this part to match your logging needs in the browser
       };
     } else {
