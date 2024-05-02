@@ -102,7 +102,7 @@ class Samarithan {
 
     try {
       const response = await axios.post(
-        ENDPOINTS.INCIDENT,
+        ENDPOINTS.LOG,
         {
           title: e?.message,
           description: e.stack?.toString(),
